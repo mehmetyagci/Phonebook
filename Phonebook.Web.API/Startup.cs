@@ -6,10 +6,13 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Phonebook.Data;
+using Phonebook.Service;
 
 namespace Phonebook.Web.API
 {
@@ -26,6 +29,14 @@ namespace Phonebook.Web.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddDbContext<PhonebookDbContext>(options =>
+            {
+                options.UseNpgsql(Configuration.GetConnectionString("ConnectionDb"));
+            });
+
+            services.AddTransient(typeof(IPersonService), typeof(PersonService));
+            //services.AddTransient(typeof(ICom), typeof(PersonService));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
