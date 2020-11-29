@@ -1,16 +1,14 @@
 ﻿using Phonebook.Constants;
-using Phonebook.Domain.Base;
 using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace Phonebook.Domain
+namespace Phonebook.Dto
 {
-    public class CommunicationInfo : BaseEntity
+    public class CommunicationInfoResponse : BaseResponse
     {
         public Guid PersonId { get; set; }
-        public Person Person { get; set; }
-
         public CommunicationType CommunicationType { get; set; }
-
         public string Info { get; set; }
     }
 }

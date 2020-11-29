@@ -23,64 +23,16 @@ namespace Phonebook.Service
             this.dbSet = _dbContext.Set<T>();
         }
 
-        public async Task<IEnumerable<T>> GetAllAsync(string includeProperties = null)
+        public async Task<IEnumerable<T>> GetAllAsync()
         {
-            var query = dbSet
-               .AsNoTracking();
-
-            if (includeProperties != null)
-            {
-                foreach (var item in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
-                {
-                    query = query.Include(item.Trim()).Where(y => !y.IsDeleted);
-                }
-            }
-
-            query = query.Where(x => !x.IsDeleted);
+            var query = dbSet.Where(x => !x.IsDeleted);
             var result = await query.ToListAsync().ConfigureAwait(false);
-            return result;
-        }
-
-        public async Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>> predicate, string includeProperties = null)
-        {
-            var query = dbSet.Where(predicate);
-
-            if (includeProperties != null)
-            {
-                foreach (var item in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
-                {
-                    query = query.Include(item.Trim()).Where(y => !y.IsDeleted); // TODO: Include 'lara IsDeleted filtresi eklenmesi.
-                }
-            }
-
-            var result = await query.Where(x => !x.IsDeleted).ToListAsync().ConfigureAwait(false);
             return result;
         }
 
         public async Task<T> GetAsync(Guid id)
         {
             var result = await dbSet.FirstOrDefaultAsync(x => x.Id == id && !x.IsDeleted).ConfigureAwait(false);
-            return result;
-        }
-
-        public async Task<T> GetFirstOrDefaultAsync(Expression<Func<T, bool>> filter = null, string includeProperties = null)
-        {
-            IQueryable<T> query = dbSet;
-
-            if (filter != null)
-            {
-                query = query.Where(filter);
-            }
-
-            if (includeProperties != null)
-            {
-                foreach (var item in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
-                {
-                    query = query.Include(item);
-                }
-            }
-
-            var result = await query.Where(x => !x.IsDeleted).FirstOrDefaultAsync().ConfigureAwait(false);
             return result;
         }
 

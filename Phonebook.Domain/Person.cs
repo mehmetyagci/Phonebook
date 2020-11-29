@@ -11,6 +11,5 @@ namespace Phonebook.Domain
         public string Company { get; set; }
 
         public List<CommunicationInfo> CommunicationInfos { get; set; } = new List<CommunicationInfo>();
-
     }
 }
