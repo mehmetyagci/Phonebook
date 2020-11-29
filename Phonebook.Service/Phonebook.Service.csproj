@@ -5,7 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Phonebook.Data\Phonebook.Data.csproj" />
+    <ProjectReference Include="..\Phonebook.Dto\Phonebook.Dto.csproj" />
   </ItemGroup>
 
 </Project>

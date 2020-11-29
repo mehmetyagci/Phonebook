@@ -11,6 +11,8 @@ namespace Phonebook.Data.Map
         {
             modelBuilder.HasKey(a => a.Id);
             modelBuilder.Property(t => t.Info).HasMaxLength(500);
+            modelBuilder.HasOne(e => e.Person)
+                        .WithMany(t => t.CommunicationInfos);
             modelBuilder.ToTable(nameof(CommunicationInfo));
         }
     }
