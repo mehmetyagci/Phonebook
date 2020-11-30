@@ -6,6 +6,7 @@ using System;
 using Phonebook.Domain;
 using Phonebook.Dto;
 using Phonebook.Constants;
+using Phonebook.Domain.Base;
 
 namespace Phonebook.Service.Infrastructure
 {
@@ -15,15 +16,26 @@ namespace Phonebook.Service.Infrastructure
         {
             AllowNullDestinationValues = true;
 
+            CreateMap<BaseEntity, BaseResponse>()
+                .ReverseMap();
+
             #region Person
 
-            CreateMap<Domain.Person, PersonResponse>().ReverseMap();
+            CreateMap<Domain.Person, PersonResponse>()
+                //.IncludeBase<BaseEntity, BaseResponse>()
+                .ReverseMap();
 
-            CreateMap<Domain.Person, CreatePersonRequest>().ReverseMap();
+            CreateMap<Domain.Person, CreatePersonRequest>()
+                // .IncludeBase<BaseEntity, BaseResponse>()
+                .ReverseMap();
 
-            CreateMap<Domain.Person, UpdatePersonRequest>().ReverseMap();
+            CreateMap<Domain.Person, UpdatePersonRequest>()
+                // .IncludeBase<BaseEntity, BaseResponse>()
+                .ReverseMap();
 
-            CreateMap<Domain.Person, PersonDetailResponse>();
+            CreateMap<Domain.Person, PersonDetailResponse>()
+                // .IncludeBase<BaseEntity, BaseResponse>()
+                .ReverseMap();
 
             #endregion Person
 
@@ -32,14 +44,22 @@ namespace Phonebook.Service.Infrastructure
             CreateMap<Domain.CommunicationInfo, CommunicationInfoResponse>()
                  //.ForMember(destination => destination.CommunicationType,
                  //opt => opt.MapFrom(source => Enum.GetName(typeof(CommunicationType), source.CommunicationType)))
+                 // .IncludeBase<BaseEntity, BaseResponse>()
                  .ReverseMap();
 
             CreateMap<Domain.CommunicationInfo, CreateCommunicationInfoRequest>()
                 .ForMember(destination => destination.CommunicationType,
-                 opt => opt.MapFrom(source => Enum.GetName(typeof(CommunicationType), source.CommunicationType)))
+                           opt => opt.MapFrom(source => Enum.GetName(typeof(CommunicationType), source.CommunicationType)))
+                // .IncludeBase<BaseEntity, BaseResponse>()
                 .ReverseMap();
 
             #endregion CommunicationInfo
+
+            #region Report
+            CreateMap<Domain.Report, ReportResponse>()
+                 // .IncludeBase<BaseEntity, BaseResponse>()
+                 .ReverseMap();
+            #endregion Report
         }
     }
 }
