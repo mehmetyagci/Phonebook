@@ -35,10 +35,9 @@ namespace Phonebook.Data
             optionsBuilder.UseLoggerFactory(_consoleLoggerFactory);
         }
 
-
         public DbSet<Person> Persons { get; set; }
-
-         public DbSet<CommunicationInfo> CommunicationInfos { get; set; }
+        public DbSet<CommunicationInfo> CommunicationInfos { get; set; }
+        public DbSet<Report> Reports { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -47,6 +46,7 @@ namespace Phonebook.Data
 
             modelBuilder.ApplyConfiguration(new PersonMap());
             modelBuilder.ApplyConfiguration(new CommunicationInfoMap());
+            modelBuilder.ApplyConfiguration(new ReportMap());
 
             base.OnModelCreating(modelBuilder);
         }
@@ -74,7 +74,6 @@ namespace Phonebook.Data
                 {
                     case EntityState.Added:
                         entiry.CurrentValues[nameof(IBaseEntity.CreatedDate)] = unixTime;
-                        
                         break;
                     case EntityState.Modified:
                         entiry.CurrentValues[nameof(IBaseEntity.ModifiedDate)] = unixTime;

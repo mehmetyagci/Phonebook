@@ -33,7 +33,7 @@ namespace Phonebook.Web.API.Controllers
 
 
         [HttpGet("get")]
-        public async Task<IActionResult> GetAll()
+        public async Task<ActionResult<IEnumerable<PersonResponse>>> GetAll()
         {
             try
             {
@@ -57,7 +57,7 @@ namespace Phonebook.Web.API.Controllers
 
 
         [HttpGet("get/{id:guid}")]
-        public async Task<IActionResult> Get(Guid id)
+        public async Task<ActionResult<PersonResponse>> Get(Guid id)
         {
             try
             {

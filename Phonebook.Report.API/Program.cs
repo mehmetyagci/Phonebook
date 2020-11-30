@@ -4,7 +4,7 @@ using Microsoft.Extensions.Hosting;
 using Serilog;
 using System;
 
-namespace Phonebook.Web.API
+namespace Phonebook.Report.API
 {
     public class Program
     {

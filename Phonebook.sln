@@ -15,6 +15,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Phonebook.Service", "Phoneb
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Phonebook.Dto", "Phonebook.Dto\Phonebook.Dto.csproj", "{6DC2267D-902A-48E0-A3F0-445EF73A1ADB}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Phonebook.Report.API", "Phonebook.Report.API\Phonebook.Report.API.csproj", "{599DA086-2ADB-4D0E-9C08-A763DB6D917F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phonebook.API.Gateway", "Phonebook.API.Gateway\Phonebook.API.Gateway.csproj", "{0DE9F1C9-2C67-457F-9737-76B16855413F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phonebook.UnitTest", "Phonebook.UnitTest\Phonebook.UnitTest.csproj", "{DAC5B670-9A5D-44DA-B647-7C3F663B8912}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{489D374F-3953-4916-899C-C663133779FF}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
@@ -50,6 +56,18 @@ Global
 		{6DC2267D-902A-48E0-A3F0-445EF73A1ADB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6DC2267D-902A-48E0-A3F0-445EF73A1ADB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6DC2267D-902A-48E0-A3F0-445EF73A1ADB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{599DA086-2ADB-4D0E-9C08-A763DB6D917F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{599DA086-2ADB-4D0E-9C08-A763DB6D917F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{599DA086-2ADB-4D0E-9C08-A763DB6D917F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{599DA086-2ADB-4D0E-9C08-A763DB6D917F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DE9F1C9-2C67-457F-9737-76B16855413F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DE9F1C9-2C67-457F-9737-76B16855413F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DE9F1C9-2C67-457F-9737-76B16855413F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DE9F1C9-2C67-457F-9737-76B16855413F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAC5B670-9A5D-44DA-B647-7C3F663B8912}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAC5B670-9A5D-44DA-B647-7C3F663B8912}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAC5B670-9A5D-44DA-B647-7C3F663B8912}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAC5B670-9A5D-44DA-B647-7C3F663B8912}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

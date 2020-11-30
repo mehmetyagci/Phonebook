@@ -10,4 +10,10 @@ namespace Phonebook.Constants
         Email = 1,
         Location = 2
     }
+
+    public enum ReportStatus
+    {
+        Preparing = 0,
+        Completed = 1
+    }
 }
