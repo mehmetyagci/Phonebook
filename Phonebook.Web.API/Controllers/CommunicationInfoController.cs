@@ -7,6 +7,7 @@ using Phonebook.Dto;
 using Phonebook.Service;
 using Phonebook.Web.API.Models;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Phonebook.Web.API.Controllers
@@ -74,6 +75,28 @@ namespace Phonebook.Web.API.Controllers
                 });
 
                 _logger.LogError(ex, "Exception Caught. CommunicationInfo.Delete method.");
+
+                return BadRequest(error);
+            }
+        }
+
+        [HttpGet("locationreport")]
+        public async Task<ActionResult<List<LocationReportResponse>>> GetLocationReport()
+        {
+            try
+            {
+                var result = await _communicationInfoService.GetLocationReport();
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                var error = (new CustomBadRequest
+                {
+                    ErrorCode = StatusCodes.Status400BadRequest,
+                    ErrorMessage = ex.ToString(),
+                });
+
+                _logger.LogError(ex, "Exception Caught. CommunicationInfo. GetLocationReport method.");
 
                 return BadRequest(error);
             }

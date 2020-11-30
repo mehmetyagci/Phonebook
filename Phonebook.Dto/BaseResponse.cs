@@ -8,9 +8,9 @@ namespace Phonebook.Dto
     {
         #region Base Fields
         public Guid Id { get; set; }
-        bool IsDeleted { get; set; }
-        long CreatedDate { get; set; }
-        long? ModifiedDate { get; set; }
+        public bool IsDeleted { get; set; }
+        public long CreatedDate { get; set; }
+        public long? ModifiedDate { get; set; }
         #endregion Base Fields
     }
 }

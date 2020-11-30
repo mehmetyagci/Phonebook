@@ -1,25 +1,17 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Phonebook.Data;
 using Phonebook.Service;
 using Phonebook.Service.Infrastructure;
 using Phonebook.Web.API.Infrastructure;
-using Phonebook.Web.API.Models;
 
-namespace Phonebook.Web.API
+namespace Phonebook.Report.API
 {
     public class Startup
     {
@@ -33,32 +25,16 @@ namespace Phonebook.Web.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers()
-                    .AddNewtonsoftJson(options =>
-                    {
-                        options.SerializerSettings.Formatting = Newtonsoft.Json.Formatting.Indented;
-                        options.SerializerSettings.DefaultValueHandling = Newtonsoft.Json.DefaultValueHandling.Include;
-                        options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Serialize;
-                        options.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Include;
-                    });
+            services.AddControllers();
+                 //   .AddNewtonsoftJson(options =>
+                 //{
+                 //    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                 //});
 
             services.AddDbContext<PhonebookDbContext>(options =>
             {
                 options.UseNpgsql(Configuration.GetConnectionString("ConnectionDb"));
             });
-
-            services.AddMvc()
-                        .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
-                        .ConfigureApiBehaviorOptions(options =>
-                        {
-                            options.InvalidModelStateResponseFactory = context =>
-                            {
-                                var problems = new CustomBadRequest(context);
-                                return new BadRequestObjectResult(problems);
-                            };
-                        });
-
-            services.AddMvcCore().AddDataAnnotations();
 
             // Auto Mapper Configurations
             var mappingConfig = new MapperConfiguration(mc =>
@@ -72,13 +48,12 @@ namespace Phonebook.Web.API
             IMapper mapper = mappingConfig.CreateMapper();
             services.AddSingleton(mapper);
 
-            services.AddTransient(typeof(IPersonService), typeof(PersonService));
-            services.AddTransient(typeof(ICommunicationInfoService), typeof(CommunicationInfoService));
+            services.AddTransient(typeof(IReportService), typeof(ReportService));
 
             #region Swagger
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Phonebook Rest API Service", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Phonebook Report API Service", Version = "v1" });
                 c.SchemaFilter<EnumSchemaFilter>();
             });
             #endregion Swagger
