@@ -1,12 +1,12 @@
-# Phonebook microservis 
+ï»¿# Phonebook microservis 
 
-## Hakkında
+## Hakkinda
 
-#### Person microservis aşağıdaki özelliklere sahiptir; 
+#### Person microservis aÅŸaÄŸÄ±daki Ã¶zelliklere sahiptir; 
 * 
 
 
-#### Rapor microservis aşağıdaki özelliklere sahiptir; 
+#### Rapor microservis aÅŸaÄŸÄ±daki Ã¶zelliklere sahiptir; 
 * 
  
 
@@ -17,7 +17,7 @@
 
 
 ## Run The Project
-Uygulamayı çalıştırmak için aşağıdaki araçlara gereksinim duyulmaktadır:
+UygulamayÄ± Ã§alÄ±ÅŸtÄ±rmak iÃ§in aÅŸaÄŸÄ±daki araÃ§lara gereksinim duyulmaktadÄ±r:
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 * [.Net Core 3.1 or later](https://dotnet.microsoft.com/download/dotnet-core/3.1)
